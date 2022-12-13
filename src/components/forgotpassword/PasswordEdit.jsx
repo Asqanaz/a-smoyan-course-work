@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react"
-import {useForm} from "react-hook-form"
-import {Link} from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { Link } from "react-router-dom"
 import TextField from "@mui/material/TextField"
 import Box from "@mui/material/Box"
 import FormHelperText from "@mui/material/FormHelperText"
 
-export const PasswordEdit = ({userDatas, setUserDatas}) => {
+export const PasswordEdit = ({ userDatas, setUserDatas }) => {
 	const [message, setMessage] = useState("")
 	const {
 		register,
-		formState: {isValid, errors},
+		formState: { isValid, errors },
 		handleSubmit,
 		reset
-	} = useForm({mode: "onSubmit", reValidateMode: "onSubmit"})
+	} = useForm({ mode: "onSubmit", reValidateMode: "onSubmit" })
 
 	const handleChangeDatas = data => {
 		if (isValid) {
@@ -27,7 +27,6 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 		reset()
 	}
 
-	console.log(errors)
 	return (
 		<form className="form-container flex flex-col" onSubmit={handleSubmit(handleChangeDatas)}>
 			<Box
@@ -119,7 +118,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 			<div className="back-to-login flex flex-col justify-center items-center mt-6">
 				<FormHelperText
 					error={Object.values(errors).length ? true : false}
-					sx={{color: "#55DE7F", marginBottom: 8 + "px"}}
+					sx={{ color: "#55DE7F", marginBottom: 8 + "px" }}
 				>
 					{errors?.currentUserName?.message || errors?.currentPassword?.message || message}
 				</FormHelperText>

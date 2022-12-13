@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-export const Modal = ({isOpen, setIsOpen}) => {
+export const Modal = ({ setIsOpen }) => {
 	return (
 		<div
 			className="w-full h-full absolute top-0 left-0 backdrop-blur-sm flex justify-center items-center z-0"
@@ -13,8 +13,12 @@ export const Modal = ({isOpen, setIsOpen}) => {
 			>
 				<span>Դուք արդյոք ցանկանում եք դուրս գալ ծրագրից</span>
 				<div className="w-full flex justify-around items-center">
-					<Link to = "/" state = {{from: location.pathname}} className="w-1/3"><button className="w-full text-white">Ok</button></Link>
-					<button className = "w-1/3 text-white" onClick = {() => setIsOpen(false)}>Cancel</button>
+					<Link to="/" state={{ from: location.pathname }} className="w-1/3">
+						<button className="w-full text-white">Ok</button>
+					</Link>
+					<button className="w-1/3 text-white" onClick={() => setIsOpen(false)}>
+						Cancel
+					</button>
 				</div>
 			</div>
 		</div>

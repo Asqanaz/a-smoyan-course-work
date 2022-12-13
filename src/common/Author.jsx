@@ -17,7 +17,6 @@ export const Author = () => {
     }, 2000);
   }, [ads]);
 
-  console.log(ads);
   return (
     <>
       <textarea

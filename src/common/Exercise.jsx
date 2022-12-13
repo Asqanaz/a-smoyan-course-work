@@ -3,7 +3,6 @@ import React, { useState } from "react"
 export const Exercise = () => {
 	let [row, setRow] = useState()
 	let [column, setColumn] = useState()
-	let newestArr = []
 	const [initArr, setInitArr] = useState()
 	const [resArr, setResArr] = useState()
 	const [maxEl, setMaxEl] = useState()
@@ -48,10 +47,6 @@ export const Exercise = () => {
 		setInitArr(arr)
 		setResArr(deletingMaxElement(arr))
 	}
-
-	console.log(initArr)
-	console.log(resArr)
-	console.log(maxEl)
 	return (
 		<div className="flex flex-row justify-between w-full">
 			<div className="flex flex-col gap-10">
