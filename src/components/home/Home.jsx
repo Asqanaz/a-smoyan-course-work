@@ -24,9 +24,9 @@ export const Home = () => {
 	return (
 		<div className="container bg-gray-400 h-1/2">
 			<div className="w-full bg-blue-700">
-				<ul className="list-none flex flex-row w-2/3 justify-between items-center p-2">
+				<ul className="list-none flex flex-row gap-5 items-center p-2">
 					<li className="cursor-pointer text-xs">
-						<NavLink to="/home/exercise">Course Work</NavLink>
+						<NavLink to="/home/exercise">Խնդիր</NavLink>
 					</li>
 					<li className="cursor-pointer text-xs">
 						<NavLink to="/home/tip-of-the-day">Օրվա խորհուրդներ</NavLink>
@@ -42,11 +42,11 @@ export const Home = () => {
 						<span>Դասավորել</span>
 						{dropOpen && (
 							<ul
-								className="w-[78px] bg-green-700 flex-col flex justify-center items-center absolute top-[100%] gap-2 z-10"
+								className="bg-blue-700 flex-col flex justify-center items-center absolute p-2 gap-2 z-10"
 								onClick={e => e.stopPropagation()}
 							>
-								<li>Abcd</li>
-								<li>Abcd</li>
+								<li>Հորիզոնական</li>
+								<li>Հերթականությամբ</li>
 							</ul>
 						)}
 					</li>

@@ -119,7 +119,7 @@ export const PasswordEdit = ({userDatas, setUserDatas}) => {
 			<div className="back-to-login flex flex-col justify-center items-center mt-6">
 				<FormHelperText
 					error={Object.values(errors).length ? true : false}
-					sx={{color: "green", marginBottom: 8 + "px"}}
+					sx={{color: "#55DE7F", marginBottom: 8 + "px"}}
 				>
 					{errors?.currentUserName?.message || errors?.currentPassword?.message || message}
 				</FormHelperText>

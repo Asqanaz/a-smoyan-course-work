@@ -1,9 +1,9 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 
 export const Exercise = () => {
 	let [row, setRow] = useState()
 	let [column, setColumn] = useState()
- 	let newestArr = []
+	let newestArr = []
 	const [initArr, setInitArr] = useState()
 	const [resArr, setResArr] = useState()
 	const [maxEl, setMaxEl] = useState()
@@ -55,35 +55,47 @@ export const Exercise = () => {
 	return (
 		<div className="flex flex-row justify-between w-full">
 			<div className="flex flex-col gap-10">
-				<input type="number" placeholder="Row" value = {row} onChange={(e) => setRow(e.target.value)} />
-				<input type="number" placeholder="Column" value = {column} onChange={(e) => setColumn(e.target.value)}/>
+				<input type="number" placeholder="Row" value={row} onChange={e => setRow(e.target.value)} />
+				<input type="number" placeholder="Column" value={column} onChange={e => setColumn(e.target.value)} />
 				<button className="text-white" onClick={runTask}>
 					Submit
 				</button>
 				{maxEl && <span>Max element of matrix: {maxEl}</span>}
 			</div>
-			<table border="1">
-				<tbody>
-					{initArr?.map(row => (
-						<tr>
-							{row.map(col => (
-								<td>{col}</td>
-							))}
-						</tr>
-					))}
-				</tbody>
-			</table>
-			<table border="1">
-				<tbody>
-					{resArr?.map(row => (
-						<tr>
-							{row.map(col => (
-								<td>{col}</td>
-							))}
-						</tr>
-					))}
-				</tbody>
-			</table>
+			<div className="flex flex-row justify-around items-center w-full">
+				{initArr && (
+					<div className="flex flex-col justify-center items-center gap-5">
+						<span>Նախնական մատրից</span>
+						<table border="1">
+							<tbody>
+								{initArr.map(row => (
+									<tr>
+										{row.map(col => (
+											<td>{col}</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				)}
+				{resArr && (
+					<div className="flex flex-col justify-center items-center gap-5">
+						<span>Վերջնական մատրից</span>
+						<table border="1">
+							<tbody>
+								{resArr.map(row => (
+									<tr>
+										{row.map(col => (
+											<td>{col}</td>
+										))}
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				)}
+			</div>
 		</div>
 	)
 }
