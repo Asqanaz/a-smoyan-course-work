@@ -1,6 +1,6 @@
-import React, {useRef, useState, useEffect} from "react"
-import {Outlet, NavLink, Link} from "react-router-dom"
-import {Modal} from "../../common/Modal"
+import React, { useRef, useState, useEffect } from "react"
+import { Outlet, NavLink, Link } from "react-router-dom"
+import { Modal } from "../../common/Modal"
 
 export const Home = () => {
 	const [dropOpen, setDropOpen] = useState(false)
@@ -56,12 +56,26 @@ export const Home = () => {
 					<li className="cursor-pointer text-xs">
 						<NavLink to="/home/author">Հեղինակ</NavLink>
 					</li>
-					<li className="cursor-pointer text-xs" onClick = {() => setIsOpen(true)}>Ելք</li>
+					<li className="cursor-pointer text-xs" onClick={() => setIsOpen(true)}>
+						Ելք
+					</li>
 				</ul>
 			</div>
 			<main className="bg-white w-full h-full p-20 flex flex-row gap-10 relative">
 				<Outlet />
-				{isOpen && <Modal isOpen={isOpen} setIsOpen={setIsOpen} />}
+				{isOpen && (
+					<Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+						<span>Դուք արդյոք ցանկանում եք դուրս գալ ծրագրից</span>
+						<div className="w-full flex justify-around items-center">
+							<Link to="/" state={{ from: location.pathname }} className="w-1/3">
+								<button className="w-full text-white">Ok</button>
+							</Link>
+							<button className="w-1/3 text-white" onClick={() => setIsOpen(false)}>
+								Cancel
+							</button>
+						</div>
+					</Modal>
+				)}
 			</main>
 		</div>
 	)

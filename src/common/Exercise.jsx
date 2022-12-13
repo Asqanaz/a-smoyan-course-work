@@ -1,12 +1,22 @@
 import React, { useState } from "react"
+import { useEffect } from "react"
+import { Modal } from "./Modal"
 
 export const Exercise = () => {
+	const [isOpen, setIsOpen] = useState()
+	const [text, setText] = useState("")
+	const [message, setMessage] = useState("")
 	let [row, setRow] = useState()
 	let [column, setColumn] = useState()
 	const [initArr, setInitArr] = useState()
 	const [resArr, setResArr] = useState()
 	const [maxEl, setMaxEl] = useState()
 
+	useEffect(() => {
+		fetch("/exercise.txt")
+			.then(res => res.text())
+			.then(text => setText(text))
+	}, [])
 	function deletingMaxElement(arr) {
 		let newArr = []
 		let maxOfRow = []
@@ -37,15 +47,20 @@ export const Exercise = () => {
 		return newArr
 	}
 	const runTask = () => {
-		let arr = []
-		for (let i = 0; i < row; i++) {
-			arr[i] = []
-			for (let j = 0; j < column; j++) {
-				arr[i][j] = Math.round(Math.random() * 1000)
+		if (!row || !column) {
+			setMessage("Input fields are empty")
+		} else {
+			setMessage("")
+			let arr = []
+			for (let i = 0; i < row; i++) {
+				arr[i] = []
+				for (let j = 0; j < column; j++) {
+					arr[i][j] = Math.round(Math.random() * 1000)
+				}
 			}
+			setInitArr(arr)
+			setResArr(deletingMaxElement(arr))
 		}
-		setInitArr(arr)
-		setResArr(deletingMaxElement(arr))
 	}
 	return (
 		<div className="flex flex-row justify-between w-full">
@@ -55,7 +70,17 @@ export const Exercise = () => {
 				<button className="text-white" onClick={runTask}>
 					Submit
 				</button>
+
+				<button className="text-white" onClick={() => setIsOpen(true)}>
+					Խնդրի պահանջ
+				</button>
+				{isOpen && (
+					<Modal setIsOpen={setIsOpen}>
+						<p className="text-white">{text}</p>
+					</Modal>
+				)}
 				{maxEl && <span>Max element of matrix: {maxEl}</span>}
+				<p className="text-red-600">{message}</p>
 			</div>
 			<div className="flex flex-row justify-around items-center w-full">
 				{initArr && (
